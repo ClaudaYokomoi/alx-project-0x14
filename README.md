@@ -47,7 +47,7 @@ Headers:
   Authorization: Bearer YOUR_API_KEY
   Content-Type: application/json
 
-## Response Example
+### Response Example
 Search Results:
 
 json
@@ -64,5 +64,51 @@ Edit
     }
   ]
 }
-Authentication
+
+### Authentication
 To use the API, you need an API key for authentication. Add the key to your request headers:
+
+```bash
+Authorization: Bearer YOUR_API_KEY
+
+
+### Error Handling
+```markdown
+### Error Handling
+
+**Common Errors**  
+| Status Code | Meaning                        | Solution                                      |
+|-------------|--------------------------------|-----------------------------------------------|
+| 400         | Bad Request                   | Invalid request parameters. Check your query syntax and required fields. |
+| 401         | Unauthorized                  | Missing or invalid API key. Verify and include the correct API key. |
+| 404         | Not Found                     | Resource does not exist. Check the endpoint or ID being requested. |
+| 500         | Internal Server Error         | Server issue. Retry the request later or contact support. |
+
+**Example Error Handling Code:**
+```javascript
+fetch('https://api.moviesdatabase.com/v1/movies/invalid-id', {
+  headers: { Authorization: 'Bearer YOUR_API_KEY' }
+})
+  .then(response => {
+    if (!response.ok) {
+      console.error(`Error: ${response.status} - ${response.statusText}`);
+      return null;
+    }
+    return response.json();
+  })
+  .catch(err => console.error('Network error:', err));
+
+
+### Usage Limits and Recommendations
+```markdown
+### Usage Limits and Recommendations
+
+**Limits**
+- Free Tier: 1000 requests/day.
+- Rate Limit: Up to 10 requests/second.
+
+**Best Practices**
+- Use caching to minimize redundant requests for frequently accessed data.
+- Implement retry logic for transient errors like 500 Internal Server Error.
+- Log errors and monitor response times for better debugging and optimization.
+
