@@ -1,58 +1,25 @@
-# MoviesDatabase API Project
+# Movies Database API
 
-Explore and interact with the MoviesDatabase API, a powerful resource for accessing extensive movie data, including titles, genres, and recommendations.
+This project provides API documentation for accessing movie data from the Movies Database API. Below are examples for making requests, handling responses, and addressing common errors.
 
----
-
-## Overview
-
-The MoviesDatabase API enables developers to:
-- Search for movies by title or keyword.
-- Fetch detailed movie information, including cast, genres, and release date.
-- Access popular movies and recommendations.
-
-This project focuses on understanding and utilizing the API's features effectively.
-
----
-
-## API Version
-
-- **Current Version**: v1
-
----
-
-## Key Features
-
-### Endpoints
-
-| **Endpoint**                     | **Description**                                        |
-|-----------------------------------|-------------------------------------------------------|
-| `GET /movies/search`             | Search movies by title or keywords.                   |
-| `GET /movies/{id}`               | Retrieve detailed information for a specific movie.   |
-| `GET /genres`                    | Get a list of all available genres.                   |
-| `GET /movies/popular`            | Fetch the most popular movies currently.              |
-| `GET /movies/recommendations/{id}`| Get recommendations based on a specific movie.        |
-
----
-
-## Request and Response Formats
+## API Endpoints
 
 ### Request Example
 
-**Search for a movie:**  
-### GET Request Example
+**Search for a movie:**
+
 ```bash
 GET https://api.moviesdatabase.com/v1/movies/search?query=The+Matrix
 Headers:
   Authorization: Bearer YOUR_API_KEY
   Content-Type: application/json
+```
 
 ### Response Example
-Search Results:
 
-json
-Copy
-Edit
+**Search Results:**  
+
+```json
 {
   "results": [
     {
@@ -64,16 +31,16 @@ Edit
     }
   ]
 }
+```
 
 ### Authentication
+
 To use the API, you need an API key for authentication. Add the key to your request headers:
 
 ```bash
 Authorization: Bearer YOUR_API_KEY
+```
 
-
-### Error Handling
-```markdown
 ### Error Handling
 
 **Common Errors**  
@@ -85,6 +52,7 @@ Authorization: Bearer YOUR_API_KEY
 | 500         | Internal Server Error         | Server issue. Retry the request later or contact support. |
 
 **Example Error Handling Code:**
+
 ```javascript
 fetch('https://api.moviesdatabase.com/v1/movies/invalid-id', {
   headers: { Authorization: 'Bearer YOUR_API_KEY' }
@@ -97,10 +65,8 @@ fetch('https://api.moviesdatabase.com/v1/movies/invalid-id', {
     return response.json();
   })
   .catch(err => console.error('Network error:', err));
+```
 
-
-### Usage Limits and Recommendations
-```markdown
 ### Usage Limits and Recommendations
 
 **Limits**
@@ -111,4 +77,3 @@ fetch('https://api.moviesdatabase.com/v1/movies/invalid-id', {
 - Use caching to minimize redundant requests for frequently accessed data.
 - Implement retry logic for transient errors like 500 Internal Server Error.
 - Log errors and monitor response times for better debugging and optimization.
-
