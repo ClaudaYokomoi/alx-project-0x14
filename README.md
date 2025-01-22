@@ -60,6 +60,8 @@ Headers:
     }
   ]
 }
+
+
 ### Authentication
 To use the API, you need an API key for authentication. Add the key to your request headers:
 
